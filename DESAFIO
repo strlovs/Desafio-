@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+int main () {
+    int num = 1337;
+    int tentativas = 3;
+    int opcao; 
+    int chute;
+
+    printf("MODO DEFESA: Protegendo o servidor...\n");
+    printf("Um hacker está tentando invadir o sistema. Você tem 3 tentativas.\n");
+    printf("Dica: ele deixou um código para trás: MTMzNw==\n");
+    printf("\nEscolha uma opção:\n");
+    printf("1 - Interceptar e tentar capturar o código\n");
+    printf("2 - Analisar logs (dica)\n");
+    printf("3 - Ignorar (ALTO RISCO)\n");
+    printf("Opção: ");
+    scanf("%d", &opcao);
+
+    switch (opcao) {
+        case 1: 
+            while (tentativas > 0) {
+                printf("\nDigite a senha: ");
+                scanf("%d", &chute);
+
+                if (chute == num) {
+                    printf("Parabéns, você conseguiu salvar o sistema!\n");
+                    break;
+                } else if (chute < num) {
+                    printf("Seu chute foi menor que o número secreto.\n");
+                } else {
+                    printf("Seu chute foi maior que o número secreto.\n");
+                }
+
+                tentativas--;
+                printf("Você ainda tem %d tentativa(s).\n", tentativas);
+
+                if (tentativas == 0) {
+                    printf("Você errou todas as tentativas. O número correto era %d.\n", num);
+                }
+            }
+            break;
+
+        case 2:
+            printf("\nVocê escolheu acessar os logs...\n");
+            printf("Analisando logs...\n");
+            printf("DICA: MTMzNw== parece estar em base64...\n");
+            printf("Decodificando... Resultado: 1337\n");
+            printf("Talvez isso seja útil...\n");
+            break;
+
+        case 3:
+            printf("\nVocê escolheu ignorar o alerta...\n");
+            printf("SISTEMA COMPROMETIDO. A invasão foi bem-sucedida!\n");
+            break;
+
+        default:
+            printf("Opção inválida. O tempo acabou!\n");
+            break;
+    }
+
+    return 0;
+}
